@@ -1,0 +1,31 @@
+[worldserver]
+
+# Enable the neutral Hyjal starting campaign.
+NeutralStart.Enable = 1
+
+# Rewarded quest required before the faction guide offers a choice.
+# Keep 0 while testing or until the final common-chain quest is created.
+NeutralStart.RequiredQuestId = 0
+
+# Starting position: Classic Mount Hyjal (Map 1, Area 616).
+NeutralStart.Map = 1
+NeutralStart.Area = 616
+NeutralStart.X = 4975.579
+NeutralStart.Y = -1736.777
+NeutralStart.Z = 1342.3079
+NeutralStart.Orientation = 1.4023175
+
+# Capital destinations after the permanent choice.
+NeutralStart.Alliance.Map = 0
+NeutralStart.Alliance.Area = 1519
+NeutralStart.Alliance.X = -8833.38
+NeutralStart.Alliance.Y = 628.62
+NeutralStart.Alliance.Z = 94.00
+NeutralStart.Alliance.Orientation = 0.70
+
+NeutralStart.Horde.Map = 1
+NeutralStart.Horde.Area = 1637
+NeutralStart.Horde.X = 1569.59
+NeutralStart.Horde.Y = -4397.63
+NeutralStart.Horde.Z = 16.06
+NeutralStart.Horde.Orientation = 0.54

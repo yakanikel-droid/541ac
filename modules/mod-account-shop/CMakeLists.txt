@@ -1,0 +1,2 @@
+AC_ADD_SCRIPT("${CMAKE_CURRENT_LIST_DIR}/src/")
+AC_ADD_SCRIPT_LOADER("mod_account_shop" "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")

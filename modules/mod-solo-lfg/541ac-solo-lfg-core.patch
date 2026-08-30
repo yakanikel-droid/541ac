@@ -1,0 +1,54 @@
+diff --git a/src/server/game/DungeonFinding/LFGMgr.cpp b/src/server/game/DungeonFinding/LFGMgr.cpp
+--- a/src/server/game/DungeonFinding/LFGMgr.cpp
++++ b/src/server/game/DungeonFinding/LFGMgr.cpp
+@@ -43,5 +43,5 @@ namespace lfg
+ {
+-    LFGMgr::LFGMgr(): m_lfgProposalId(1), m_options(sWorld->getIntConfig(CONFIG_LFG_OPTIONSMASK)), m_Testing(sWorld->getBoolConfig(CONFIG_DEBUG_LFG))
++    LFGMgr::LFGMgr(): m_lfgProposalId(1), m_options(sWorld->getIntConfig(CONFIG_LFG_OPTIONSMASK)), m_Testing(sWorld->getBoolConfig(CONFIG_DEBUG_LFG)), m_SoloLfgEnabled(false)
+     {
+         for (uint8 team = 0; team < 2; ++team)
+         {
+diff --git a/src/server/game/DungeonFinding/LFGMgr.h b/src/server/game/DungeonFinding/LFGMgr.h
+--- a/src/server/game/DungeonFinding/LFGMgr.h
++++ b/src/server/game/DungeonFinding/LFGMgr.h
+@@ -587,6 +587,11 @@ namespace lfg
+         /// For 1 player queue testing
+         [[nodiscard]] bool IsTesting() const { return m_Testing; }
+ 
++        /// Separate production Solo LFG mode. It changes only queue size
++        /// requirements and does not enable debug proposal behavior.
++        void SetSoloLfgEnabled(bool enabled) { m_SoloLfgEnabled = enabled; }
++        [[nodiscard]] bool IsSoloLfgEnabled() const { return m_SoloLfgEnabled; }
++
+         void SetDungeon(ObjectGuid guid, uint32 dungeon);
+ 
+     private:
+@@ -648,6 +653,7 @@ namespace lfg
+         LfgPlayerDataContainer PlayersStore;               ///< Player data
+         LfgGroupDataContainer GroupsStore;                 ///< Group data
+         bool m_Testing;
++        bool m_SoloLfgEnabled;
+ 
+         // Dungeon cooldown system - prevents same dungeon being assigned in a row
+         typedef std::unordered_map<uint32 /*dungeonId*/, TimePoint /*completionTime*/> LfgDungeonCooldownMap;
+diff --git a/src/server/game/DungeonFinding/LFGQueue.cpp b/src/server/game/DungeonFinding/LFGQueue.cpp
+--- a/src/server/game/DungeonFinding/LFGQueue.cpp
++++ b/src/server/game/DungeonFinding/LFGQueue.cpp
+@@ -293,7 +293,7 @@ namespace lfg
+             return LFG_INCOMPATIBLES_MULTIPLE_LFG_GROUPS;
+ 
+         // Group with less that MAXGROUPSIZE members always compatible
+-        if (!sLFGMgr->IsTesting() && check.size() == 1 && numPlayers < MAXGROUPSIZE)
++        if (!sLFGMgr->IsTesting() && !sLFGMgr->IsSoloLfgEnabled() && check.size() == 1 && numPlayers < MAXGROUPSIZE)
+         {
+             LfgQueueDataContainer::iterator itQueue = QueueDataStore.find(check.front());
+             LfgRolesMap roles = itQueue->second.roles;
+@@ -390,7 +390,7 @@ namespace lfg
+         }
+ 
+         // Enough players?
+-        if (!sLFGMgr->IsTesting() && numPlayers != MAXGROUPSIZE)
++        if (!sLFGMgr->IsTesting() && !sLFGMgr->IsSoloLfgEnabled() && numPlayers != MAXGROUPSIZE)
+         {
+             strGuids.addRoles(proposalRoles);
+             for (uint8 i = 0; i < 5 && check.guids[i]; ++i)

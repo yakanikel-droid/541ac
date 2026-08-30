@@ -1,0 +1,7 @@
+[worldserver]
+
+# Enables respawn at the dungeon/raid entrance after releasing the spirit.
+DungeonRespawn.Enable = 0
+
+# Health percentage after resurrection. Range: 0.0-100.0.
+DungeonRespawn.RespawnHealthPct = 50.0

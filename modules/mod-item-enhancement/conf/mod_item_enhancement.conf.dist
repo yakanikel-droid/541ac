@@ -1,0 +1,45 @@
+[worldserver]
+
+ItemEnhancement.Enable = 1
+ItemEnhancement.NpcEntry = 900000
+ItemEnhancement.MaxLevel = 10
+# Диапазон 50001-50010 согласован с DBC и обязательной защитой Item::HasSocket.
+# Не изменять без одновременного изменения DBC и required_item_socket_guard.patch.
+ItemEnhancement.EnchantIdBase = 50000
+
+# Итоговый бонус предмета на каждом уровне (не складывается).
+ItemEnhancement.LevelBonuses = "1:5,2:6,3:8,4:10,5:13,6:16,7:20,8:25,9:32,10:40"
+
+# Шанс обычной платной попытки для целевого уровня.
+ItemEnhancement.SuccessChances = "1:100,2:90,3:80,4:70,5:60,6:50,7:40,8:30,9:20,10:10"
+
+# Золото за один ItemLevel для целевого уровня.
+ItemEnhancement.GoldPerItemLevel = "1:0.10,2:0.20,3:0.35,4:0.55,5:0.80,6:1.10,7:1.50,8:2.00,9:2.75,10:4.00"
+
+ItemEnhancement.MaximumSuccessChance = 100
+ItemEnhancement.BlockHeirlooms = 1
+ItemEnhancement.BlockedItemIds = ""
+ItemEnhancement.AllowedItemIds = ""
+
+# Разрешённые ItemModType из Item.h. Имена приведены в README.
+ItemEnhancement.AllowedStats = "STRENGTH,AGILITY,STAMINA,INTELLECT,SPIRIT,ATTACK_POWER,RANGED_ATTACK_POWER,SPELL_POWER,HIT_RATING,CRIT_RATING,HASTE_RATING,EXPERTISE_RATING,ARMOR_PENETRATION_RATING"
+ItemEnhancement.ScaleWeaponDamage = 1
+
+# Только BasePoints заклинаний из белого списка. Требует приложенный core patch.
+ItemEnhancement.AllowedSpellIds = "54642,46456,68468"
+
+# ItemEntry:максимальная заточка:максимальный ItemLevel (0 = без ограничения).
+ItemEnhancement.Orbs = "70063:1:100,70064:2:100,70065:3:100,70066:4:100,70067:5:100,70068:6:100,70069:7:100,70070:8:100,70071:9:100,70072:10:100,70073:1:200,70074:2:200,70075:3:200,70076:4:200,70077:5:200,70078:6:200,70079:7:200,70080:8:200,70081:9:200,70082:10:200,70083:1:0,70084:2:0,70085:3:0,70086:4:0,70087:5:0,70088:6:0,70089:7:0,70090:8:0,70091:9:0,70092:10:0"
+
+# ItemEntry:дополнительный шанс. За попытку используется только один материал.
+ItemEnhancement.ChanceItems = "70094:7,70095:10"
+
+# Защитный материал: при неудаче снимается один уровень вместо сброса до +0.
+ItemEnhancement.ProtectionItems = "70093"
+ItemEnhancement.ProtectedFailureLostLevels = 1
+ItemEnhancement.ConsumeProtectionOnFailureOnly = 1
+
+# Перенос заточки: исходный предмет становится +0, целевой получает его уровень.
+ItemEnhancement.Transfer.Enable = 1
+ItemEnhancement.Transfer.MaterialItemId = 70096
+ItemEnhancement.Transfer.MaterialCount = 1

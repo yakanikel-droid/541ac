@@ -1,0 +1,16 @@
+[worldserver]
+
+# Enable the Nova character enhancement system.
+NovaEnhancement.Enable = 1
+
+# Achievement points required for one enhancement point.
+NovaEnhancement.AchievementPointsPerPoint = 4
+
+# Permit players to reset all allocated enhancement points.
+NovaEnhancement.AllowReset = 1
+
+# Cost of resetting all allocated points, in gold.
+NovaEnhancement.ResetCostGold = 300
+
+# Maximum points in one statistic. 0 means unlimited.
+NovaEnhancement.MaxPointsPerStat = 0
