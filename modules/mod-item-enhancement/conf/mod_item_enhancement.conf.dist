@@ -4,7 +4,8 @@ ItemEnhancement.Enable = 1
 ItemEnhancement.NpcEntry = 900000
 ItemEnhancement.MaxLevel = 10
 # Диапазон 50001-50010 согласован с DBC и обязательной защитой Item::HasSocket.
-# Не изменять без одновременного изменения DBC и required_item_socket_guard.patch.
+# Защита модуля принудительно вернёт 50000, если указать другое значение.
+# Для смены диапазона требуется менять код модуля, DBC и required_item_socket_guard.patch.
 ItemEnhancement.EnchantIdBase = 50000
 
 # Итоговый бонус предмета на каждом уровне (не складывается).
@@ -21,8 +22,55 @@ ItemEnhancement.BlockHeirlooms = 1
 ItemEnhancement.BlockedItemIds = ""
 ItemEnhancement.AllowedItemIds = ""
 
-# Разрешённые ItemModType из Item.h. Имена приведены в README.
+# Полный список доступных ItemModType и их назначение:
+# MANA                       = запас маны
+# HEALTH                     = запас здоровья
+# STRENGTH                   = сила
+# AGILITY                    = ловкость
+# STAMINA                    = выносливость
+# INTELLECT                  = интеллект
+# SPIRIT                     = дух
+# DEFENSE_SKILL_RATING       = рейтинг защиты
+# DODGE_RATING               = рейтинг уклонения
+# PARRY_RATING               = рейтинг парирования
+# BLOCK_RATING               = рейтинг блока
+# HIT_MELEE_RATING           = рейтинг меткости ближнего боя
+# HIT_RANGED_RATING          = рейтинг меткости дальнего боя
+# HIT_SPELL_RATING           = рейтинг меткости заклинаний
+# CRIT_MELEE_RATING          = рейтинг критического удара ближнего боя
+# CRIT_RANGED_RATING         = рейтинг критического удара дальнего боя
+# CRIT_SPELL_RATING          = рейтинг критического эффекта заклинаний
+# HIT_TAKEN_MELEE_RATING     = снижение вероятности получить удар в ближнем бою
+# HIT_TAKEN_RANGED_RATING    = снижение вероятности получить дальнюю атаку
+# HIT_TAKEN_SPELL_RATING     = снижение вероятности получить попадание заклинанием
+# CRIT_TAKEN_MELEE_RATING    = снижение вероятности получить критический удар в ближнем бою
+# CRIT_TAKEN_RANGED_RATING   = снижение вероятности получить критическую дальнюю атаку
+# CRIT_TAKEN_SPELL_RATING    = снижение вероятности получить критический эффект заклинания
+# HASTE_MELEE_RATING         = рейтинг скорости ближнего боя
+# HASTE_RANGED_RATING        = рейтинг скорости дальнего боя
+# HASTE_SPELL_RATING         = рейтинг скорости произнесения заклинаний
+# HIT_RATING                 = общий рейтинг меткости
+# CRIT_RATING                = общий рейтинг критического удара
+# HIT_TAKEN_RATING           = общее снижение вероятности получить попадание
+# CRIT_TAKEN_RATING          = общее снижение вероятности получить критический удар
+# RESILIENCE_RATING          = рейтинг устойчивости
+# HASTE_RATING               = общий рейтинг скорости
+# EXPERTISE_RATING           = рейтинг мастерства
+# ATTACK_POWER               = сила атаки
+# RANGED_ATTACK_POWER        = сила атаки дальнего боя
+# SPELL_HEALING_DONE         = бонус лечения заклинаниями; устаревший тип WotLK
+# SPELL_DAMAGE_DONE          = бонус урона заклинаниями; устаревший тип WotLK
+# MANA_REGEN                 = восстановление маны за 5 секунд
+# ARMOR_PENETRATION_RATING   = рейтинг пробивания брони
+# SPELL_POWER                = сила заклинаний
+# HEALTH_REGEN               = восстановление здоровья
+# SPELL_PENETRATION          = проникновение заклинаний
+# BLOCK_VALUE                = величина блокируемого щитом урона
+# В строке ниже указываются только характеристики, которые действительно нужно усиливать.
 ItemEnhancement.AllowedStats = "STRENGTH,AGILITY,STAMINA,INTELLECT,SPIRIT,ATTACK_POWER,RANGED_ATTACK_POWER,SPELL_POWER,HIT_RATING,CRIT_RATING,HASTE_RATING,EXPERTISE_RATING,ARMOR_PENETRATION_RATING"
+
+# Увеличение базового урона оружия на процент текущего уровня заточки.
+# 1 = разрешено, 0 = запрещено.
 ItemEnhancement.ScaleWeaponDamage = 1
 
 # Только BasePoints заклинаний из белого списка. Требует приложенный core patch.
