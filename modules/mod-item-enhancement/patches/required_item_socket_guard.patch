@@ -1,0 +1,18 @@
+diff --git a/src/server/game/Entities/Item/Item.cpp b/src/server/game/Entities/Item/Item.cpp
+index 2dc3047..a0b262a 100644
+--- a/src/server/game/Entities/Item/Item.cpp
++++ b/src/server/game/Entities/Item/Item.cpp
+@@ -1007,8 +1007,12 @@ bool Item::GemsFitSockets() const
+ bool Item::HasSocket() const
+ {
+     // There can only be one socket added, and it's always in slot `PRISMATIC_ENCHANTMENT_SLOT`.
++    // Item enhancement markers 50001-50010 share the inspected field but are not sockets.
++    uint32 const prismaticEnchant = GetEnchantmentId(PRISMATIC_ENCHANTMENT_SLOT);
++    bool const enhancementMarker = prismaticEnchant >= 50001 && prismaticEnchant <= 50010;
++
+     //     Built-in sockets                        Socket from upgrade
+-    return this->GetTemplate()->Socket[0].Color || this->GetEnchantmentId(EnchantmentSlot(PRISMATIC_ENCHANTMENT_SLOT));
++    return GetTemplate()->Socket[0].Color || (prismaticEnchant && !enhancementMarker);
+ }
+ 
+ uint8 Item::GetGemCountWithID(uint32 GemID) const

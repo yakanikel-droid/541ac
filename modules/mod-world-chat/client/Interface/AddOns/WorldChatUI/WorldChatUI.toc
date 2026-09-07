@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: World Chat UI
+## Notes: Faction icons for channel Мир
+## Author: 541ac
+## Version: 1.0.3
+## SavedVariables: WorldChatUIDB
+
+WorldChatUI.lua

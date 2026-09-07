@@ -1,0 +1,93 @@
+[worldserver]
+
+ItemEnhancement.Enable = 1
+ItemEnhancement.NpcEntry = 900000
+ItemEnhancement.MaxLevel = 10
+# Диапазон 50001-50010 согласован с DBC и обязательной защитой Item::HasSocket.
+# Защита модуля принудительно вернёт 50000, если указать другое значение.
+# Для смены диапазона требуется менять код модуля, DBC и required_item_socket_guard.patch.
+ItemEnhancement.EnchantIdBase = 50000
+
+# Итоговый бонус предмета на каждом уровне (не складывается).
+ItemEnhancement.LevelBonuses = "1:5,2:6,3:8,4:10,5:13,6:16,7:20,8:25,9:32,10:40"
+
+# Шанс обычной платной попытки для целевого уровня.
+ItemEnhancement.SuccessChances = "1:100,2:90,3:80,4:70,5:60,6:50,7:40,8:30,9:20,10:10"
+
+# Золото за один ItemLevel для целевого уровня.
+ItemEnhancement.GoldPerItemLevel = "1:0.10,2:0.20,3:0.35,4:0.55,5:0.80,6:1.10,7:1.50,8:2.00,9:2.75,10:4.00"
+
+ItemEnhancement.MaximumSuccessChance = 100
+ItemEnhancement.BlockHeirlooms = 1
+ItemEnhancement.BlockedItemIds = ""
+ItemEnhancement.AllowedItemIds = ""
+
+# Полный список доступных ItemModType и их назначение:
+# MANA                       = запас маны
+# HEALTH                     = запас здоровья
+# STRENGTH                   = сила
+# AGILITY                    = ловкость
+# STAMINA                    = выносливость
+# INTELLECT                  = интеллект
+# SPIRIT                     = дух
+# DEFENSE_SKILL_RATING       = рейтинг защиты
+# DODGE_RATING               = рейтинг уклонения
+# PARRY_RATING               = рейтинг парирования
+# BLOCK_RATING               = рейтинг блока
+# HIT_MELEE_RATING           = рейтинг меткости ближнего боя
+# HIT_RANGED_RATING          = рейтинг меткости дальнего боя
+# HIT_SPELL_RATING           = рейтинг меткости заклинаний
+# CRIT_MELEE_RATING          = рейтинг критического удара ближнего боя
+# CRIT_RANGED_RATING         = рейтинг критического удара дальнего боя
+# CRIT_SPELL_RATING          = рейтинг критического эффекта заклинаний
+# HIT_TAKEN_MELEE_RATING     = снижение вероятности получить удар в ближнем бою
+# HIT_TAKEN_RANGED_RATING    = снижение вероятности получить дальнюю атаку
+# HIT_TAKEN_SPELL_RATING     = снижение вероятности получить попадание заклинанием
+# CRIT_TAKEN_MELEE_RATING    = снижение вероятности получить критический удар в ближнем бою
+# CRIT_TAKEN_RANGED_RATING   = снижение вероятности получить критическую дальнюю атаку
+# CRIT_TAKEN_SPELL_RATING    = снижение вероятности получить критический эффект заклинания
+# HASTE_MELEE_RATING         = рейтинг скорости ближнего боя
+# HASTE_RANGED_RATING        = рейтинг скорости дальнего боя
+# HASTE_SPELL_RATING         = рейтинг скорости произнесения заклинаний
+# HIT_RATING                 = общий рейтинг меткости
+# CRIT_RATING                = общий рейтинг критического удара
+# HIT_TAKEN_RATING           = общее снижение вероятности получить попадание
+# CRIT_TAKEN_RATING          = общее снижение вероятности получить критический удар
+# RESILIENCE_RATING          = рейтинг устойчивости
+# HASTE_RATING               = общий рейтинг скорости
+# EXPERTISE_RATING           = рейтинг мастерства
+# ATTACK_POWER               = сила атаки
+# RANGED_ATTACK_POWER        = сила атаки дальнего боя
+# SPELL_HEALING_DONE         = бонус лечения заклинаниями; устаревший тип WotLK
+# SPELL_DAMAGE_DONE          = бонус урона заклинаниями; устаревший тип WotLK
+# MANA_REGEN                 = восстановление маны за 5 секунд
+# ARMOR_PENETRATION_RATING   = рейтинг пробивания брони
+# SPELL_POWER                = сила заклинаний
+# HEALTH_REGEN               = восстановление здоровья
+# SPELL_PENETRATION          = проникновение заклинаний
+# BLOCK_VALUE                = величина блокируемого щитом урона
+# В строке ниже указываются только характеристики, которые действительно нужно усиливать.
+ItemEnhancement.AllowedStats = "STRENGTH,AGILITY,STAMINA,INTELLECT,SPIRIT,ATTACK_POWER,RANGED_ATTACK_POWER,SPELL_POWER,HIT_RATING,CRIT_RATING,HASTE_RATING,EXPERTISE_RATING,ARMOR_PENETRATION_RATING"
+
+# Увеличение базового урона оружия на процент текущего уровня заточки.
+# 1 = разрешено, 0 = запрещено.
+ItemEnhancement.ScaleWeaponDamage = 1
+
+# Только BasePoints заклинаний из белого списка. Требует приложенный core patch.
+ItemEnhancement.AllowedSpellIds = "54642,46456,68468"
+
+# ItemEntry:максимальная заточка:максимальный ItemLevel (0 = без ограничения).
+ItemEnhancement.Orbs = "70063:1:100,70064:2:100,70065:3:100,70066:4:100,70067:5:100,70068:6:100,70069:7:100,70070:8:100,70071:9:100,70072:10:100,70073:1:200,70074:2:200,70075:3:200,70076:4:200,70077:5:200,70078:6:200,70079:7:200,70080:8:200,70081:9:200,70082:10:200,70083:1:0,70084:2:0,70085:3:0,70086:4:0,70087:5:0,70088:6:0,70089:7:0,70090:8:0,70091:9:0,70092:10:0"
+
+# ItemEntry:дополнительный шанс. За попытку используется только один материал.
+ItemEnhancement.ChanceItems = "70094:7,70095:10"
+
+# Защитный материал: при неудаче снимается один уровень вместо сброса до +0.
+ItemEnhancement.ProtectionItems = "70093"
+ItemEnhancement.ProtectedFailureLostLevels = 1
+ItemEnhancement.ConsumeProtectionOnFailureOnly = 1
+
+# Перенос заточки: исходный предмет становится +0, целевой получает его уровень.
+ItemEnhancement.Transfer.Enable = 1
+ItemEnhancement.Transfer.MaterialItemId = 70096
+ItemEnhancement.Transfer.MaterialCount = 1
